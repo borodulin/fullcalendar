@@ -13,12 +13,12 @@ The preferred way to install this extension is through [composer](http://fullcal
 To install, either run
 
 ```
-$ php composer.phar require conquer/fullCalendar "*"
+$ php composer.phar require conquer/fullcalendar "*"
 ```
 or add
 
 ```
-"conquer/fullCalendar": "*"
+"conquer/fullcalendar": "*"
 ```
 
 to the ```require``` section of your `composer.json` file.
@@ -26,7 +26,7 @@ to the ```require``` section of your `composer.json` file.
 ## Usage
 
 ```php
-use conquer\fullCalendar\FullCalendarWidget;
+use conquer\fullcalendar\FullCalendarWidget;
 
 FullCalendarWidget::widget();
 
@@ -34,4 +34,4 @@ FullCalendarWidget::widget();
 
 ## License
 
-**conquer/fullCalendar** is released under the MIT License. See the bundled `LICENSE.md` for details.
+**conquer/fullcalendar** is released under the MIT License. See the bundled `LICENSE.md` for details.
