@@ -12,14 +12,31 @@ use yii\helpers\Html;
 class FullCalendarWidget extends \yii\base\Widget
 {
 	
-	
+	/**
+	 * Customize the language and localization options for the calendar.
+	 * @link http://fullcalendar.io/docs/text/lang/
+	 * @var string
+	 */
 	public $language=false;
 	
+	/**
+	 * You must first have a Google Calendar API Key
+	 * @link http://fullcalendar.io/docs/google_calendar/
+	 * @var boolean
+	 */
 	public $googleCalendar=false;
 	
-	
+	/**
+	 * General FullCalendar options
+	 * @link http://fullcalendar.io/docs/
+	 * @var array()
+	 */
 	public $options;
 	
+	/**
+	 * 
+	 * @var array()
+	 */
 	public $htmlOptions;
 	
 	/**
@@ -41,6 +58,8 @@ class FullCalendarWidget extends \yii\base\Widget
 		if(empty($htmlOptions['id']))
 			$htmlOptions['id'] = $this->getId();
 		$this->registerAssets($view);
+		if($this->language && !isset($this->options['lang']))
+			$this->options['lang']=$this->language;
 		
 		$options=Json::encode($this->options);
 		
