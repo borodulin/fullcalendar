@@ -28,7 +28,9 @@ to the ```require``` section of your `composer.json` file.
 ```php
 use conquer\fullcalendar\FullCalendarWidget;
 
-FullCalendarWidget::widget();
+<?= FullCalendarWidget::widget([
+    'weekends' => false
+]); ?>
 
 ```
 
