@@ -22,7 +22,7 @@ class FullCalendarAsset extends \yii\web\AssetBundle
 	];
 	
 	public $depends= [
-		'conquer\fullcalendar\FullCalendaPrintAsset',
+		'conquer\fullcalendar\FullCalendarPrintAsset',
 		'conquer\momentjs\MomentjsAsset',
 	];
 	
