@@ -1,6 +1,6 @@
 {
     "name": "conquer/fullcalendar",
-    "description": "Conquer fullcalendar widget",
+    "description": "Yii2 fullcalendar widget",
     "keywords": ["yii2", "extension", "widget", "fullcalendar"],
     "homepage": "https://github.com/borodulin/yii2-fullcalendar",
     "type": "yii2-extension",
