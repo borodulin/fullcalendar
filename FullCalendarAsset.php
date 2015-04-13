@@ -6,7 +6,11 @@
  */
 namespace conquer\fullcalendar;
 
-
+/**
+ * 
+ * @author Andrey Borodulin
+ *
+ */
 class FullCalendarAsset extends \yii\web\AssetBundle
 {
 	// The files are not web directory accessible, therefore we need

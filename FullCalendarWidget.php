@@ -10,6 +10,11 @@ use yii\helpers\Html;
 use conquer\helpers\Json;
 use conquer\momentjs\MomentjsAsset;
 
+/**
+ * 
+ * @author Andrey Borodulin
+ *
+ */
 class FullCalendarWidget extends \yii\base\Widget
 {
 	
@@ -59,10 +64,11 @@ class FullCalendarWidget extends \yii\base\Widget
 		if(empty($htmlOptions['id']))
 			$htmlOptions['id'] = $this->getId();
 		$this->registerAssets($view);
-		if($this->language && !isset($this->options['lang']))
-			$this->options['lang']=$this->language;
+		$options=$this->options;
+		if($this->language && !isset($options['lang']))
+			$options['lang']=$this->language;
 		
-		$options=Json::encode($this->options);
+		$options=Json::encode($options);
 		
 		$view->registerJs("jQuery('#{$htmlOptions['id']}').fullCalendar($options);");
 		
