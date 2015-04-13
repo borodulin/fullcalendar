@@ -6,7 +6,7 @@
  */
 namespace conquer\fullcalendar;
 
-class FullCalendaPrintAsset extends \yii\web\AssetBundle
+class FullCalendarPrintAsset extends \yii\web\AssetBundle
 {
 	// The files are not web directory accessible, therefore we need
 	// to specify the sourcePath property. Notice the @bower alias used.
