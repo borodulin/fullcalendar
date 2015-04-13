@@ -6,8 +6,9 @@
  */
 namespace conquer\fullcalendar;
 
-use yii\helpers\Json;
 use yii\helpers\Html;
+use conquer\helpers\Json;
+use conquer\momentjs\MomentjsAsset;
 
 class FullCalendarWidget extends \yii\base\Widget
 {
@@ -37,7 +38,7 @@ class FullCalendarWidget extends \yii\base\Widget
 	 * 
 	 * @var array()
 	 */
-	public $htmlOptions;
+	public $htmlOptions=[];
 	
 	/**
 	 * Initializes the widget.
@@ -65,7 +66,7 @@ class FullCalendarWidget extends \yii\base\Widget
 		
 		$view->registerJs("jQuery('#{$htmlOptions['id']}').fullCalendar($options);");
 		
-		return Html::tag('div', '', $this->htmlOptions);
+		return Html::tag('div', '', $htmlOptions);
 	}
 
 	
@@ -74,7 +75,7 @@ class FullCalendarWidget extends \yii\base\Widget
 		FullCalendarAsset::register($view);
 		if($this->language){
 			FullCalendarAsset::$language=$this->language;
-			conquer\momentjs\MomentjsAsset::$language=$this->language;
+			MomentjsAsset::$language=$this->language;
 		}
 		if($this->googleCalendar)
 			FullCalendarAsset::$googleCalendar=true;
