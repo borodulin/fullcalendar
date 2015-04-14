@@ -46,6 +46,12 @@ class FullCalendarWidget extends \yii\base\Widget
 	public $htmlOptions=[];
 	
 	/**
+	 * 
+	 * @var array()
+	 */
+	public $events;
+	
+	/**
 	 * Initializes the widget.
 	 * If you override this method, make sure you call the parent implementation first.
 	 */
@@ -67,6 +73,9 @@ class FullCalendarWidget extends \yii\base\Widget
 		$options=$this->options;
 		if($this->language && !isset($options['lang']))
 			$options['lang']=$this->language;
+		
+		if($this->events)
+			$options['events']=$this->events;
 		
 		$options=Json::encode($options);
 		
