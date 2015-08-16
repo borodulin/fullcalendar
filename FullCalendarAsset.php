@@ -36,10 +36,12 @@ class FullCalendarAsset extends \yii\web\AssetBundle
 	
 	public function registerAssetFiles($view)
 	{
-		if(self::$googleCalendar)
+		if (self::$googleCalendar) {
 			$this->js[]='gcal.js';
-		if(self::$language)
+		}
+		if (self::$language) {
 			$this->js[]='lang-all.js';
+		}
 		parent::registerAssetFiles($view);
 	}
 	

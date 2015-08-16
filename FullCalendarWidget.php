@@ -66,17 +66,18 @@ class FullCalendarWidget extends \yii\base\Widget
 	public function run()
 	{
 		$view = $this->view;
-		$htmlOptions=$this->htmlOptions;
-		if(empty($htmlOptions['id']))
+		$htmlOptions = $this->htmlOptions;
+		if (empty($htmlOptions['id'])) {
 			$htmlOptions['id'] = $this->getId();
+		}
 		$this->registerAssets($view);
 		$options=$this->options;
-		if($this->language && !isset($options['lang']))
+		if ($this->language && !isset($options['lang'])) {
 			$options['lang']=$this->language;
-		
-		if($this->events)
+		}
+		if ($this->events) {
 			$options['events']=$this->events;
-		
+		}
 		$options=Json::encode($options);
 		
 		$view->registerJs("jQuery('#{$htmlOptions['id']}').fullCalendar($options);");
@@ -88,11 +89,12 @@ class FullCalendarWidget extends \yii\base\Widget
 	public function registerAssets($view)
 	{
 		FullCalendarAsset::register($view);
-		if($this->language){
+		if ($this->language) {
 			FullCalendarAsset::$language=$this->language;
 			MomentjsAsset::$language=$this->language;
 		}
-		if($this->googleCalendar)
+		if ($this->googleCalendar) {
 			FullCalendarAsset::$googleCalendar=true;
+		}
 	}
 }
