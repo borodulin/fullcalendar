@@ -35,19 +35,25 @@ class FullCalendarWidget extends \yii\base\Widget
 	/**
 	 * General FullCalendar options
 	 * @link http://fullcalendar.io/docs/
-	 * @var array()
+	 * @var array
 	 */
 	public $options;
-	
+
 	/**
-	 * 
-	 * @var array()
+	 * Container tag
+	 * @var string
 	 */
-	public $htmlOptions=[];
+	public $tag = 'div';
+	
+	/**
+	 * Container html options
+	 * @var array
+	 */
+	public $htmlOptions = [];
 	
 	/**
 	 * 
-	 * @var array()
+	 * @var array
 	 */
 	public $events;
 	
@@ -58,6 +64,9 @@ class FullCalendarWidget extends \yii\base\Widget
 	public function init()
 	{
 		parent::init();
+		if (!isset($this->htmlOptions['id'])) {
+		    $this->htmlOptions['id'] = $this->getId();
+		}
 	}
 	
 	/**
@@ -66,23 +75,24 @@ class FullCalendarWidget extends \yii\base\Widget
 	public function run()
 	{
 		$view = $this->view;
-		$htmlOptions = $this->htmlOptions;
-		if (empty($htmlOptions['id'])) {
-			$htmlOptions['id'] = $this->getId();
-		}
+		
 		$this->registerAssets($view);
+		
 		$options=$this->options;
 		if ($this->language && !isset($options['lang'])) {
-			$options['lang']=$this->language;
+			$options['lang'] = $this->language;
 		}
 		if ($this->events) {
-			$options['events']=$this->events;
+			$options['events'] = $this->events;
 		}
-		$options=Json::encode($options);
 		
-		$view->registerJs("jQuery('#{$htmlOptions['id']}').fullCalendar($options);");
+		$id = $this->htmlOptions['id'];
 		
-		return Html::tag('div', '', $htmlOptions);
+		$options = Json::encode($options);
+		
+		echo Html::tag($this->tag, '', $this->htmlOptions);
+		
+		$view->registerJs("jQuery('#$id').fullCalendar($options);");
 	}
 
 	
@@ -90,8 +100,8 @@ class FullCalendarWidget extends \yii\base\Widget
 	{
 		FullCalendarAsset::register($view);
 		if ($this->language) {
-			FullCalendarAsset::$language=$this->language;
-			MomentjsAsset::$language=$this->language;
+			FullCalendarAsset::$language = $this->language;
+			MomentjsAsset::$language = $this->language;
 		}
 		if ($this->googleCalendar) {
 			FullCalendarAsset::$googleCalendar=true;
