@@ -28,17 +28,15 @@ class FullCalendarAction extends \yii\base\Action
      */
     public function init()
     {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        $this->controller->enableCsrfValidation = false;
+        if (!is_callable($this->dataCallback)) {
+            throw new InvalidConfigException('"' . get_class($this) . '::dataCallback" should be a valid callback.');
+        }
     }
 
     public function run($start, $end, $_)
     {
-        $request = \Yii::$app->request;
-        
-        if (!is_callable($this->dataCallback)) {
-            throw new InvalidConfigException('"' . get_class($this) . '::dataCallback" should be a valid callback.');
-        }
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $this->controller->enableCsrfValidation = false;
         
         return call_user_func($this->dataCallback, $start, $end);        
     }
