@@ -102,7 +102,7 @@ class FullCalendarWidget extends \yii\base\Widget
 	public function registerAssets($view)
 	{
 		FullCalendarAsset::register($view);
-		if ($this->language !== false) {
+		if ($this->language) {
 			FullCalendarAsset::$language = $this->language;
 			MomentjsAsset::$language = $this->language;
 		}
