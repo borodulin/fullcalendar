@@ -11,16 +11,16 @@ namespace conquer\fullcalendar;
  */
 class FullCalendarPrintAsset extends \yii\web\AssetBundle
 {
-	// The files are not web directory accessible, therefore we need
-	// to specify the sourcePath property. Notice the @bower alias used.
-	public $sourcePath = '@bower/fullcalendar/dist';
-	
-	public $css=[
-		'fullcalendar.print.css',
-	];
-	
-	public $cssOptions = [
-    	'media' => 'print'
+    // The files are not web directory accessible, therefore we need
+    // to specify the sourcePath property. Notice the @bower alias used.
+    public $sourcePath = '@bower/fullcalendar/dist';
+    
+    public $css=[
+        'fullcalendar.print.css',
+    ];
+    
+    public $cssOptions = [
+        'media' => 'print'
     ];
 
 }
