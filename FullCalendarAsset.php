@@ -30,9 +30,9 @@ class FullCalendarAsset extends \yii\web\AssetBundle
 		'conquer\momentjs\MomentjsAsset',
 	];
 	
-	public static $language=false;
+	public static $language;
 	
-	public static $googleCalendar=false;
+	public static $googleCalendar;
 	
 	public function registerAssetFiles($view)
 	{

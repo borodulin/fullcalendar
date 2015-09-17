@@ -23,14 +23,14 @@ class FullCalendarWidget extends \yii\base\Widget
 	 * @link http://fullcalendar.io/docs/text/lang/
 	 * @var string
 	 */
-	public $language=false;
+	public $language;
 	
 	/**
 	 * You must first have a Google Calendar API Key
 	 * @link http://fullcalendar.io/docs/google_calendar/
 	 * @var boolean
 	 */
-	public $googleCalendar=false;
+	public $googleCalendar = false;
 	
 	/**
 	 * General FullCalendar options
@@ -67,6 +67,9 @@ class FullCalendarWidget extends \yii\base\Widget
 		if (!isset($this->htmlOptions['id'])) {
 		    $this->htmlOptions['id'] = $this->getId();
 		}
+		if (is_null($this->language)) {
+	        $this->language = \Yii::$app->language;
+		}
 	}
 	
 	/**
@@ -99,12 +102,12 @@ class FullCalendarWidget extends \yii\base\Widget
 	public function registerAssets($view)
 	{
 		FullCalendarAsset::register($view);
-		if ($this->language) {
+		if ($this->language !== false) {
 			FullCalendarAsset::$language = $this->language;
 			MomentjsAsset::$language = $this->language;
 		}
 		if ($this->googleCalendar) {
-			FullCalendarAsset::$googleCalendar=true;
+			FullCalendarAsset::$googleCalendar = true;
 		}
 	}
 }
