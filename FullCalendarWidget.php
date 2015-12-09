@@ -70,6 +70,7 @@ class FullCalendarWidget extends \yii\base\Widget
         if (is_null($this->language)) {
             $this->language = \Yii::$app->language;
         }
+        echo Html::beginTag($this->tag, $this->htmlOptions);
     }
     
     /**
@@ -77,11 +78,13 @@ class FullCalendarWidget extends \yii\base\Widget
      */
     public function run()
     {
-        $view = $this->view;
+        echo Html::endTag($this->tag);
+        
+        $view = $this->getView();
         
         $this->registerAssets($view);
         
-        $options=$this->options;
+        $options = $this->options;
         if ($this->language && !isset($options['lang'])) {
             $options['lang'] = $this->language;
         }
@@ -89,13 +92,9 @@ class FullCalendarWidget extends \yii\base\Widget
             $options['events'] = $this->events;
         }
         
-        $id = $this->htmlOptions['id'];
-        
         $options = Json::encode($options);
         
-        echo Html::tag($this->tag, '', $this->htmlOptions);
-        
-        $view->registerJs("jQuery('#$id').fullCalendar($options);");
+        $view->registerJs("jQuery('#{$this->htmlOptions['id']}').fullCalendar($options);");
     }
 
     

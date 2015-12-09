@@ -15,7 +15,7 @@ class FullCalendarPrintAsset extends \yii\web\AssetBundle
     // to specify the sourcePath property. Notice the @bower alias used.
     public $sourcePath = '@bower/fullcalendar/dist';
     
-    public $css=[
+    public $css = [
         'fullcalendar.print.css',
     ];
     

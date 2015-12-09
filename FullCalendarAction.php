@@ -31,13 +31,13 @@ class FullCalendarAction extends \yii\base\Action
         if (!is_callable($this->dataCallback)) {
             throw new InvalidConfigException('"' . get_class($this) . '::dataCallback" should be a valid callback.');
         }
+        
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $this->controller->enableCsrfValidation = false;
     }
 
     public function run($start, $end, $_)
     {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        $this->controller->enableCsrfValidation = false;
-        
         return call_user_func($this->dataCallback, $start, $end);        
     }
 }

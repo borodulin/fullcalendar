@@ -17,15 +17,15 @@ class FullCalendarAsset extends \yii\web\AssetBundle
     // to specify the sourcePath property. Notice the @bower alias used.
     public $sourcePath = '@bower/fullcalendar/dist';
     
-    public $css=[
+    public $css = [
         'fullcalendar.min.css',
     ];
     
-    public $js=[
+    public $js = [
         'fullcalendar.min.js',
     ];
     
-    public $depends= [
+    public $depends = [
         'conquer\fullcalendar\FullCalendarPrintAsset',
         'conquer\momentjs\MomentjsAsset',
     ];
@@ -37,10 +37,10 @@ class FullCalendarAsset extends \yii\web\AssetBundle
     public function registerAssetFiles($view)
     {
         if (self::$googleCalendar) {
-            $this->js[]='gcal.js';
+            $this->js[] = 'gcal.js';
         }
         if (self::$language) {
-            $this->js[]='lang-all.js';
+            $this->js[] = 'lang-all.js';
         }
         parent::registerAssetFiles($view);
     }
